@@ -32,6 +32,42 @@ def get_shop_list_by_dishes(person_count: int, dishes: list):
 get_shop_list_by_dishes(2, ['Запеченный картофель', 'Омлет'])
 
 
+import os
+
+name = os.path.basename(r'1.txt')
+print(name)
+from pprint import pprint
+text_1 = '1.txt'
+text_2 = '2.txt'
+text_3 = '3.txt'
+
+import os.path
 
 
+files = [text_1, text_2, text_3]
+for file in files:
+    with open(file, 'r', encoding='utf-8') as file:
+        name = os.path.basename(str(file))
+        pprint(name)
+        print(len(file.readlines()))
+
+with open ('1.txt', encoding = 'utf-8') as f1,\
+        open('2.txt', encoding = 'utf-8') as f2,\
+        open('3.txt', encoding = 'utf-8') as f3:
+    text1 = f1.readlines()
+    text1.insert(0, os.path.basename(r'C:\Users\Ильдар\Desktop\homework_read_files\1.txt'))
+    text2 = f2.readlines()
+    text2.insert(0, os.path.basename(r'C:\Users\Ильдар\Desktop\homework_read_files\2.txt'))
+    text3 = f3.readlines()
+    text3.insert(0, os.path.basename(r'C:\Users\Ильдар\Desktop\homework_read_files\3.txt'))
+
+with open('4.txt', 'w', encoding = 'utf-8') as f4:
+    text4 = [text1, text2, text3]
+    text4.sort(key=len)
+    for text in text4:
+        f4.write(text[0])
+        f4.write('\n')
+        f4.write(str(len(text[1:])))
+        f4.write('\n')
+        f4.writelines(text[1:])
 
